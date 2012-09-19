@@ -23,13 +23,34 @@ Requires Rails 3.1 and higher
 Usage
 ---
 
-In your javascript file include the following
+In your application.js javascript file include the following
 
-require jquery-star-rating
+//= require jquery-star-rating
 
-And stylesheet
+//= require jquery.MetaData (If you want support for split/partial star ratings)
 
-	require jquery-star-rating
+and in your application.css stylesheet
+
+*= require jquery-star-rating
+
+In your view (e.g. new.html.erb) add the "star" class to your radio buttons:
+<%= f.label :rating, "Rating" %>
+
+<%= f.radio_button :rating, "1", :class => "star" %>
+<%= f.radio_button :rating, "2", :class => "star" %>
+<%= f.radio_button :rating, "3", :class => "star" %>
+<%= f.radio_button :rating, "4", :class => "star" %>
+<%= f.radio_button :rating, "5", :class => "star" %>
+
+or like this:
+
+ <% (1..5).each do |i| %>
+  	 <%= radio_button_tag(name, value, checked?, :class => "star") %>
+ <% end %>
+
+ <% (1..5).each do |i| %>
+  	 <%= f.radio_button :rating, i, :class => "star" %>
+ <% end %>
 
 Changelog
 ---
